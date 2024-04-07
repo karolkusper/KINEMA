@@ -1,4 +1,4 @@
-package com.karolkusper.KINEMA.service;
+package com.karolkusper.KINEMA.service.User;
 
 import com.karolkusper.KINEMA.dao.RoleRepository;
 import com.karolkusper.KINEMA.dao.UserRepository;

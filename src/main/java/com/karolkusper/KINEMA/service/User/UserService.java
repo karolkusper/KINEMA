@@ -1,4 +1,4 @@
-package com.karolkusper.KINEMA.service;
+package com.karolkusper.KINEMA.service.User;
 
 import com.karolkusper.KINEMA.entity.User;
 

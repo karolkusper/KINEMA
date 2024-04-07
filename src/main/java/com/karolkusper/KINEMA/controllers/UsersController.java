@@ -1,7 +1,7 @@
 package com.karolkusper.KINEMA.controllers;
 
 import com.karolkusper.KINEMA.entity.User;
-import com.karolkusper.KINEMA.service.UserServiceImpl;
+import com.karolkusper.KINEMA.service.User.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
