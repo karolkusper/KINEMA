@@ -1,7 +1,6 @@
 package com.karolkusper.KINEMA.controllers;
 
 import com.karolkusper.KINEMA.entity.Movie;
-import com.karolkusper.KINEMA.entity.User;
 import com.karolkusper.KINEMA.service.Movie.MovieServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -45,7 +44,7 @@ public class MovieController {
         }
         else
         {
-            throw new RuntimeException("There is no user with id="+movie.getId());
+            throw new RuntimeException("There is no movie with id="+movie.getId());
         }
     }
 
