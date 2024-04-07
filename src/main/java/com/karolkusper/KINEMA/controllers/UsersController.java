@@ -11,6 +11,7 @@ import java.util.List;
 @RequestMapping("/api/users")
 public class UsersController {
     private UserServiceImpl userService;
+
     @Autowired
     public UsersController(UserServiceImpl userService) {
         this.userService = userService;
@@ -37,7 +38,15 @@ public class UsersController {
 
     @PutMapping()
     public User updateUser(@RequestBody User updatedUser){
-        return userService.save(updatedUser);
+        User existingUser=userService.findById(updatedUser.getId());
+        if(existingUser !=null)
+        {
+            return userService.save(updatedUser);
+        }
+        else
+        {
+            throw new RuntimeException("There is no user with id="+updatedUser.getId());
+        }
     }
 
     @DeleteMapping("/{userId}")
