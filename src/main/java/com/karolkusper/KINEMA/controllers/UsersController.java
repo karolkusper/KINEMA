@@ -1,13 +1,9 @@
 package com.karolkusper.KINEMA.controllers;
 
 import com.karolkusper.KINEMA.entity.User;
-import com.karolkusper.KINEMA.service.UserService;
 import com.karolkusper.KINEMA.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,5 +26,23 @@ public class UsersController {
         return userService.findById(userId);
     }
 
+
+    @PostMapping()
+    public User addUser(@RequestBody User user)
+    {
+        user.setId(0);
+
+        return userService.save(user);
+    }
+
+    @PutMapping()
+    public User updateUser(@RequestBody User updatedUser){
+        return userService.save(updatedUser);
+    }
+
+    @DeleteMapping("/{userId}")
+    public void deleteUser(@PathVariable Integer userId){
+        userService.deleteById(userId);
+    }
 
 }
