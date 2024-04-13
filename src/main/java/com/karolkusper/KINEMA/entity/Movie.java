@@ -21,14 +21,14 @@ public class Movie {
     private String director;
 
     @Column(name = "production_year")
-    private String productionYear;
+    private int productionYear;
 
     @Column(name="movie_genre")
     private String movieGenre;
 
     public Movie(){}
 
-    public Movie(String title, String description, String director, String productionYear, String movieGenre) {
+    public Movie(String title, String description, String director, int productionYear, String movieGenre) {
         this.title = title;
         this.description = description;
         this.director = director;
@@ -41,7 +41,7 @@ public class Movie {
     }
 
     public int getId() {
-        return 0;
+        return this.id;
     }
 
     public String getTitle() {
@@ -68,11 +68,11 @@ public class Movie {
         this.director = director;
     }
 
-    public String getProductionYear() {
+    public int getProductionYear() {
         return productionYear;
     }
 
-    public void setProductionYear(String productionYear) {
+    public void setProductionYear(int productionYear) {
         this.productionYear = productionYear;
     }
 

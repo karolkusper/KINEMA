@@ -31,6 +31,7 @@ public class MovieController {
     @PostMapping()
     public Movie addMovie(@RequestBody Movie movie)
     {
+        movie.setId(0);
         return movieService.save(movie);
     }
 

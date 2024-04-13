@@ -40,7 +40,7 @@ public class Booking {
     }
 
     public int getId() {
-        return 0;
+        return id;
     }
 
     public User getUser() {
