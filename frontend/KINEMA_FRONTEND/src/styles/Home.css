@@ -16,7 +16,7 @@
   width: auto;
   /* margin-left: 50px; */
   padding: 20px; /* Dodałem padding, aby tekst był bardziej czytelny */
-  background-color: rgba(18, 22, 25, 0.7); /* Kolor tła z przezroczystością */
+  background-color: #8d050b51; /* Kolor tła z przezroczystością */
   border-radius: 10px;
   color: white;
 }
@@ -58,7 +58,7 @@
   border-radius: 5px;
   cursor: pointer;
   justify-content: center;
-  background-color: #a0a0a0;
+  background-color: #07090a;
   height: 50px;
   width: 180px;
   color: white;
@@ -67,7 +67,7 @@
 }
 
 .headerContainer button:hover {
-  background-color: #07090a;
+  background-color: #121619;
   cursor: pointer;
   transition: 0.3s ease-in;
 }
