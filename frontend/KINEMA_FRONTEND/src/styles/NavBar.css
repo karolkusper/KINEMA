@@ -1,6 +1,6 @@
 .navbar {
     width: 100%;
-    height: 100px;
+    height: 10vh;
     background-color: #590004;
     display: flex;
     flex-direction: row;
@@ -11,7 +11,11 @@
     height: 100%;
     display: flex;
     align-items: center;
-    padding-left: 150px;
+    padding-left: 10vw;
+    color: white;
+    justify-content: flex-start;
+    gap:20px;
+    
   }
   
   .navbar .leftSide img {
@@ -26,7 +30,7 @@
     justify-content: center;
   }
   
-  .navbar a {
+  /* .navbar a {
     color: white;
     text-decoration: none;
     margin: 20px;
@@ -39,6 +43,7 @@
     cursor: pointer;
   }
   
+ 
   .navbar .rightSide svg {
     font-size: 40px;
   }
@@ -99,4 +104,4 @@
     .hiddenLinks {
       display: none;
     }
-  }
+  } */
