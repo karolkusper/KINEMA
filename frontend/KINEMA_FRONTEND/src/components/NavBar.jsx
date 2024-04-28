@@ -28,7 +28,7 @@ function NavBar() {
             <Link to="/contact">Contact</Link> */}
             <MenuButton desc="/" name="Home"/>
             <MenuButton desc="/movies" name="Movies"/>
-            <MenuButton desc="/about" name="About"/>
+            <MenuButton desc="/repertuar" name="Repertuar"/>
             <MenuButton desc="/contact" name="Contact"/>
             <button onClick={toggleNavBar}>
                 <ReorderIcon />

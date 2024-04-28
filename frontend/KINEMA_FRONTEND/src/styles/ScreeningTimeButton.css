@@ -1,0 +1,15 @@
+.screeningTimeButton{
+    background-color: #f3020c;
+    width: 100px;
+    height: 50px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: 0.2s
+}
+.screeningTimeButton:hover{
+    background-color: #121619;
+}
