@@ -38,17 +38,21 @@ public class CinemaHallServiceImpl implements CinemaHallService{
     }
 
     @Override
-    public CinemaHall save(CinemaHall movie) {
-        int id = movie.getId();
+    public CinemaHall save(CinemaHall cinemaHall) {
+        int id = cinemaHall.getId();
         if(id==0){
-            return cinemaHallRepository.save(movie);
+            return cinemaHallRepository.save(cinemaHall);
         }
         else {
-            CinemaHall existingCinameHall = cinemaHallRepository.findById(id)
+            CinemaHall existingCinemaHall = cinemaHallRepository.findById(id)
                     .orElseThrow(()->new RuntimeException("There is no cinemaHall with id="+id));
 
+            existingCinemaHall.setHallName(cinemaHall.getHallName());
+            existingCinemaHall.setSeatsCapacity(cinemaHall.getSeatsCapacity());
+
+            return cinemaHallRepository.save(existingCinemaHall);
         }
-        return null;
+
     }
 
     @Override
