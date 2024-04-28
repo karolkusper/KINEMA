@@ -5,6 +5,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    gap:5vh;
   }
   .movies .moviesTitle {
     font-family: cursive;
@@ -51,6 +52,18 @@
   .moviesItem p {
     margin-left: 20px;
   }
+
+
+
+  /* moje style -------------------------------------- */
+
+  .sliderDiv{
+    width: 60vw;
+    height: 50vh;
+    margin: 0 auto;
+  }
+
+  /* ------------------------------------------------- */
   
   @media only screen and (max-width: 1300px) {
     .moviesList {
