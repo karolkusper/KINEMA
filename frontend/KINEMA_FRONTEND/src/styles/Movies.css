@@ -8,6 +8,7 @@
     gap:5vh;
   }
   .movies .moviesTitle {
+    color: #f3020c;
     font-family: cursive;
     font-size: 60px;
   }
@@ -28,7 +29,8 @@
     min-height: 350px;
     margin: 20px;
     box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
-    background-color: #850f15b5;
+    /* background-color: #850f15b5; */
+    background-color: #f3020c;
     color:black;
   }
   .moviesItem:hover {

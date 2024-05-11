@@ -1,11 +1,11 @@
 
-body{
-    background-color: #121619;
+.auth_body{
+    /* background-color: #121619; */
     background-image: none;
     display: flex;
     justify-content: center;
     align-items: center;
-
+    /* height: 100vh; */
 }
 .form-box {
     margin-top: 20vh;

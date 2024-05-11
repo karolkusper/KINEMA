@@ -6,6 +6,7 @@ import Home from './Home.jsx';
 import Movie from './Movies.jsx';
 import Repertuar from './Repertuar.jsx';
 import { Route, Routes } from 'react-router-dom';
+import '../App.css';
 
 function Content() {
   return (

@@ -33,6 +33,7 @@
 .dotsContainer {
     display: flex;
     justify-content: center;
+    color: #f3020c;
   }
   
 .dots {

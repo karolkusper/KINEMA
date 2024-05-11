@@ -6,28 +6,14 @@ import Login from './Login';
 import '../styles/Forms.css'
 function Auth_page() {
   return (
-    <Routes>
-      <Route exact path='login' element={<Login />} />
-      <Route path='register' element={<Register />} />
-    </Routes>
+    <div className='auth_body'>
+      <Routes>
+            <Route path='login' element={<Login />} />
+            <Route path='register' element={<Register />} />
+          </Routes>
+    </div>
+    
   );
 }
 
 export default Auth_page;
-
-// import React from 'react'
-// import {BrowserRouter as  Route, Routes} from 'react-router-dom'
-// import Register from './Register'
-
-// function Auth_page() {
-//   return (
-//     <div>
-//         <Routes>
-//             {/* <Route exact path='/login' element={<Movie />} /> */}
-//             <Route path='/auth/register' element={<Register />} />
-//         </Routes>
-//     </div>
-//   )
-// }
-
-// export default Auth_page
