@@ -10,7 +10,7 @@ function Home() {
         
             <p>Explore the world of cinematography...</p>
 
-            <Link to='/movies'>
+            <Link to='/content/movies'>
                 <button>
                     See our movies
                 </button>

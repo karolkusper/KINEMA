@@ -1,0 +1,23 @@
+.screeningRowContainer{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    gap: 5vw;
+}
+.screeningRow-image{
+    width: 200px;
+    height: 250px;
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+}
+.screeningRow-info{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: start;
+}
+.screeningRow-info h1{
+    margin: 0;
+}

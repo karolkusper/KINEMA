@@ -48,7 +48,9 @@ public class UserServiceImpl implements UserService{
         if (user.getId() == 0) {
             user.setRoles(Arrays.asList(roleRepository.getRoleByName("ROLE_CLIENT")));
             return userRepository.save(user);
-        } else {
+        }
+        else
+        {
 
             User existingUser = userRepository.findById(user.getId())
                     .orElseThrow(() -> new RuntimeException("User not found with id: " + user.getId()));

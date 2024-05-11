@@ -1,12 +1,15 @@
 package com.karolkusper.KINEMA.entity;
 
 import jakarta.persistence.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name="users")
-public class User {
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -61,12 +64,14 @@ public class User {
         this.userName = userName;
     }
 
-    public String getPassword() {
-        return password;
-    }
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
     }
 
 //    public Boolean getEnabled() {
@@ -121,4 +126,44 @@ public class User {
                 ", email='" + email + '\'' +
                 '}';
     }
+
+
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() { //sprawdzic czy dobrze
+        return List.of(new GrantedAuthority() {
+            @Override
+            public String getAuthority() {
+                return getRoles().toString();
+            }
+        });
+    }
+
+
+
+    @Override
+    public String getUsername() {
+        return getEmail();
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
 }
