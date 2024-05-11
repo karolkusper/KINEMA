@@ -1,4 +1,14 @@
+
+body{
+    background-color: #121619;
+    background-image: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
 .form-box {
+    margin-top: 20vh;
     background-color: #590004;
     display: flex;
     flex-direction: column;
@@ -9,4 +19,91 @@
     font-family: "Poppins", sans-serif;
     font-weight: 600;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.form-box a {
+    text-decoration: none;
+    color: #121619;
+    font-size: 1.2rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 4vh;
+    padding-top: 1em;
+    font-family: "Inter", sans-serif;
+}
+
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+}
+
+.inputs input {
+    background-color: #121619a9;
+    color: white;
+    border-style: none;
+    border-radius: 5px;
+    /* border-bottom: #121619 solid 0.1em; */
+    font-size: 1.5em;
+    font-weight: 100;
+}
+
+
+
+.inputs input:focus {
+    outline: none;
+}
+
+::placeholder {
+    color: white;
+}
+
+.button {
+    border-style: none;
+    padding: 10px 20px;
+    font-size: 1.75em;
+    justify-content: space-evenly;
+    cursor: pointer;
+
+
+    background-color: #f3020c;
+    border-radius: 2em;
+    color: white;
+
+}
+
+
+
+.h {
+    color: #121619a9;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.h h3 {
+    font-size: 0.9em;
+    margin: 0;
+}
+
+.h h2 {
+    color: #f3020c;
+    font-size: 1.75em;
+    margin: 0;
+}
+
+/* Visual effects */
+.button:hover
+ {
+    background-color: #121619;
+}
+.h h2:hover{
+    cursor: pointer;
+    color: #121619;
 }
