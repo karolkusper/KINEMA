@@ -26,10 +26,10 @@ function NavBar() {
             <Link to="/movies">Movies</Link>
             <Link to="/about">About</Link>
             <Link to="/contact">Contact</Link> */}
-            <MenuButton desc="/" name="Home"/>
-            <MenuButton desc="/movies" name="Movies"/>
-            <MenuButton desc="/repertuar" name="Repertuar"/>
-            <MenuButton desc="/contact" name="Contact"/>
+            <MenuButton desc="/content/home" name="Home"/>
+            <MenuButton desc="/content/movies" name="Movies"/>
+            <MenuButton desc="/content/repertuar" name="Repertuar"/>
+            <MenuButton desc="/content/contact" name="Contact"/>
             <button onClick={toggleNavBar}>
                 <ReorderIcon />
             </button>
