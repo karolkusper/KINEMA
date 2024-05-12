@@ -5,6 +5,7 @@ import Footer from '../components/Footer.jsx';
 import Home from './Home.jsx';
 import Movie from './Movies.jsx';
 import Repertuar from './Repertuar.jsx';
+import Profile from './Profile.jsx';
 import { Route, Routes } from 'react-router-dom';
 import '../App.css';
 
@@ -16,6 +17,7 @@ function Content() {
         <Route path='home' element={<Home />} />
         <Route path='movies' element={<Movie />} />
         <Route path='repertuar' element={<Repertuar />} />
+        <Route path='profile' element={<Profile />} />
       </Routes>
       <Footer />
     </>

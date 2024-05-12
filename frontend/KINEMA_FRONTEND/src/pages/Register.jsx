@@ -1,6 +1,6 @@
 import React from 'react'
 import "../styles/Forms.css"
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import { useState } from 'react';
 import axiosGetAuth from '../axiosGetAuth.jsx'
 
@@ -15,6 +15,8 @@ function Register() {
         'confirmed':'',
     })
 
+    const navigate = useNavigate();
+
     const handleChange = (e)=>{
         const {name,value} = e.target;
         setFormData({...formData,[name]:value});
@@ -26,6 +28,7 @@ function Register() {
         try{
             const response = await axiosGetAuth.post('/api/v1/auth/register',formData);
             console.log('Registration successful:', response.data);
+            navigate("/");
         }
         catch (error){
             console.error('Registration failed:',error.response.data)

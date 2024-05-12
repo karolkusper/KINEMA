@@ -1,7 +1,7 @@
 import React from 'react'
 import "../styles/Forms.css"
-import {Link} from 'react-router-dom'
-import { useState ,useHistory} from 'react';
+import {Link, useNavigate} from 'react-router-dom'
+import { useState } from 'react';
 import axiosGetAuth from '../axiosGetAuth.jsx'
 
 function Login() {
@@ -16,7 +16,8 @@ function Login() {
         setFormData({...formData,[name]:value});
     };
 
-    const history = useHistory();
+    // const history = useHistory();
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
@@ -32,7 +33,7 @@ function Login() {
             // localStorage.setItem('refreshToken', refreshToken);
 
             // Redirect to /content/home
-            history.push('/content/home');
+            navigate('/content/home');
             
         }
         catch (error){
