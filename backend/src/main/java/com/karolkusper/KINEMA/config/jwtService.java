@@ -1,11 +1,12 @@
 package com.karolkusper.KINEMA.config;
 
+import com.karolkusper.KINEMA.dao.UserRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
-import org.springframework.security.core.userdetails.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,13 @@ import java.util.function.Function;
 public class jwtService {
 
     private static final String SECRET_KEY="0b0932a7f0bc2891c55eb19a966ac9e700e7550923fa74f7ad79bcf26c9dcc5daba14d98f9499098d21f591bc092a3a3a0a1bbb449eb7b03fc55252704db5b09";
+//    private final UserRepository userRepository;
+//
+//    @Autowired
+//    public jwtService(UserRepository userRepository) {
+//        this.userRepository = userRepository;
+//    }
+
     public String extractUsername(String token) {
         return extractClaim(token,Claims::getSubject);
     }
@@ -32,8 +40,14 @@ public class jwtService {
         return generateToken(new HashMap<>(),userDetails);
     }
 
+
+
     public String generateToken(Map<String,Object> extraClaims, UserDetails userDetails)
     {
+
+
+
+
         return Jwts.
                 builder()
                 .setClaims(extraClaims)

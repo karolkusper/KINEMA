@@ -11,6 +11,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 
@@ -70,7 +72,15 @@ public class AuthenticationService {
         User user = userRepository.findByEmail(request.getEmail()).orElseThrow(()->new RuntimeException("No user found with this email"));
 //        System.out.println("Authenticate: request_email="+request.getEmail()+" request_password="+request.getPassword());
 //        System.out.println("Authenticate: user_email="+user.getEmail()+" user_password="+user.getPassword());
-        var jwtToken = jwtService.generateToken(user);
+
+
+        Map<String,Object> extraClaims = new HashMap<>();
+
+        //     Pobierz ID użytkownika z userDetails
+        extraClaims.put("userId", user.getId());
+
+
+        var jwtToken = jwtService.generateToken(extraClaims,user);
 
         return new AuthenticationResponse(jwtToken);
     }

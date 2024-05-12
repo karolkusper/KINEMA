@@ -13,16 +13,16 @@ public class RegisterRequest {
     private String lastName;
     private String email;
 
-    private Collection<Role> roles;
+//    private Collection<Role> roles;
     public RegisterRequest(){}
 
-    public RegisterRequest(String userName, String password, String firstName, String lastName, String email, Collection<Role> roles) {
+    public RegisterRequest(String userName, String password, String firstName, String lastName, String email/*, Collection<Role> roles*/) {
         this.userName = userName;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.roles = roles;
+//        this.roles = roles;
     }
 
     public String getUserName() {
@@ -76,12 +76,12 @@ public class RegisterRequest {
                 '}';
     }
 
-    public Collection<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Collection<Role> roles) {
-        this.roles = roles;
-    }
+//    public Collection<Role> getRoles() {
+//        return roles;
+//    }
+//
+//    public void setRoles(Collection<Role> roles) {
+//        this.roles = roles;
+//    }
 }
 
