@@ -30,13 +30,16 @@
     margin: 20px;
     box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
     /* background-color: #850f15b5; */
-    background-color: #f3020c;
-    color:black;
+    /* background-color: #f3020c; */
+    background-color: #590004;;
+    color:white;
   }
   .moviesItem:hover {
     box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.5);
     transition: 0.3s ease-in;
     cursor: pointer;
+    background-color: #f3020c;
+    color:#121619;
   }
   
   .moviesItem div {

@@ -16,6 +16,10 @@
     font-size: 70px;
     cursor: pointer;
   }
+
+  .socialMedia svg :hover {
+    color: #f3020c;
+  }
   
   .footer p {
     color: white;

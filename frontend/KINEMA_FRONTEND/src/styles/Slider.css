@@ -21,6 +21,10 @@
     cursor: pointer;
 }
 
+.arrow:hover{
+   color: #f3020c;
+}
+
 .arrow.left {
     left: 32px;
 }
@@ -33,11 +37,16 @@
 .dotsContainer {
     display: flex;
     justify-content: center;
-    color: #f3020c;
+    
   }
   
 .dots {
     margin: 0 3px;
     cursor: pointer;
     font-size: 30px;
+    color: white;
   };
+
+  .dots:hover{
+    color: #f3020c;
+  }
