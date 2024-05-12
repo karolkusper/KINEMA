@@ -22,16 +22,11 @@ function Login() {
     const handleSubmit = async (e) =>{
         e.preventDefault();
         try{
-            const response = await axiosGetAuth.post('/api/v1/auth/authenticate',formData);
-            console.log('Autjentication successful:', response.data);
+            const response = await axiosGetAuth.post('/api/v1/auth/authenticate', formData);
+            console.log('Authentication successful:', response.data);
 
-            // const { token, refreshToken } = response.data;
-            const token = response.data;
-
-            // Store the tokens in localStorage
+            const token = response.data.token;
             localStorage.setItem('token', token);
-            // localStorage.setItem('refreshToken', refreshToken);
-
             // Redirect to /content/home
             navigate('/content/home');
             
