@@ -1,5 +1,5 @@
 .screeningTimeButton{
-    background-color: #f3020c;
+    background-color: #590004;
     width: 100px;
     height: 50px;
     border-radius: 5px;
@@ -11,5 +11,6 @@
     transition: 0.2s
 }
 .screeningTimeButton:hover{
-    background-color: #121619;
+    background-color: #f3020c;
+    color:#121619;
 }
