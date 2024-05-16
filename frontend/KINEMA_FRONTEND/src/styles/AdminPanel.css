@@ -6,3 +6,10 @@
     margin-top: 0;
     margin-bottom: 15vh;
 }
+
+.forms-container{
+    gap: 10vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

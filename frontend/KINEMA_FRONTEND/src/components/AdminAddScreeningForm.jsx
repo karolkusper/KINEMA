@@ -40,7 +40,7 @@ function AdminAddScreeningForm() {
                     <input name="endTime" type="text" placeholder="End time" value={formData.endTime} onChange={handleChange}/>
                     <input name="format" type="text" placeholder="Format" value={formData.format} onChange={handleChange}/>
                 </div>
-                <button className="button" type="submit">Add new movie</button>
+                <button className="button" type="submit">Add new screening</button>
             </form>
         </div>
     </div>
