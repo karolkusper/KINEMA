@@ -26,14 +26,18 @@ public class Movie {
     @Column(name="movie_genre")
     private String movieGenre;
 
+    @Column(name="poster_path")
+    private String posterPath;
+
     public Movie(){}
 
-    public Movie(String title, String description, String director, int productionYear, String movieGenre) {
+    public Movie(String title, String description, String director, int productionYear, String movieGenre, String posterPath) {
         this.title = title;
         this.description = description;
         this.director = director;
         this.productionYear = productionYear;
         this.movieGenre = movieGenre;
+        this.posterPath = posterPath;
     }
 
     public void setId(int id) {
@@ -84,6 +88,14 @@ public class Movie {
         this.movieGenre = movieGenre;
     }
 
+    public String getPosterPath() {
+        return posterPath;
+    }
+
+    public void setPosterPath(String posterPath) {
+        this.posterPath = posterPath;
+    }
+
     @Override
     public String toString() {
         return "Movie{" +
@@ -91,8 +103,9 @@ public class Movie {
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", director='" + director + '\'' +
-                ", productionYear='" + productionYear + '\'' +
+                ", productionYear=" + productionYear +
                 ", movieGenre='" + movieGenre + '\'' +
+                ", posterPath='" + posterPath + '\'' +
                 '}';
     }
 }
