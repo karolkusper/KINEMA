@@ -6,6 +6,7 @@ import Home from './Home.jsx';
 import Movie from './Movies.jsx';
 import Repertuar from './Repertuar.jsx';
 import Profile from './Profile.jsx';
+import SeatPicker from '../components/SeatPicker.jsx';
 import { Route, Routes } from 'react-router-dom';
 import '../App.css';
 
@@ -18,6 +19,7 @@ function Content() {
         <Route path='movies' element={<Movie />} />
         <Route path='repertuar' element={<Repertuar />} />
         <Route path='profile' element={<Profile />} />
+        <Route path='seats' element={<SeatPicker cinemaHallId={1}/>} />
       </Routes>
       <Footer />
     </>
