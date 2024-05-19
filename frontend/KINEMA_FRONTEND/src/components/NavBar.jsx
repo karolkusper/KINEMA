@@ -50,9 +50,9 @@ function NavBar() {
                 ) : (
                     <MenuButton desc="/" name="Login"/>
                 )}
-            <button onClick={toggleNavBar}>
+            {/* <button onClick={toggleNavBar}>
                 <ReorderIcon />
-            </button>
+            </button> */}
         </div>
     </div>
   )

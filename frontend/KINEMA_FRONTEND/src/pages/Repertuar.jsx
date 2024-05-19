@@ -1,26 +1,41 @@
-import React from 'react'
-import ScreeningRow from '../components/ScreeningRow'
-import { MovieList } from '../variables/MovieList'
-import '../styles/Repertuar.css'
+import React, { useState, useEffect } from 'react';
+import ScreeningRow from '../components/ScreeningRow';
+import api from "../axiosAuth";
+import '../styles/Repertuar.css';
 
 function Repertuar() {
+  const [screenings, setScreenings] = useState([]);
+
+  useEffect(() => {
+    const fetchScreenings = async () => {
+      try {
+        const response = await api.get('/api/screenings');
+        setScreenings(response.data);
+      } catch (error) {
+        console.log('Error fetching Screenings:', error);
+      }
+    };
+
+    fetchScreenings();
+  }, []);
+
   return (
     <div>
-        <div>Dni tygodnia</div>
-        <div className='moviesContainer'>
-            {MovieList.map((movie,key)=>{
-                return <ScreeningRow 
-                key={key}
-                title={movie.title}
-                desc={movie.desc}
-                director={movie.director}
-                productionYear={movie.rok_produkcji}
-                image={movie.image}
-                />
-            })}
-        </div>
+      <div>Dni tygodnia</div>
+      <div className='screeningsContainer'>
+        {screenings.map((screening) => (
+          <ScreeningRow
+            key={screening.id}
+            cinemaHall={screening.cinemaHall}
+            movie={screening.movie}
+            startTime={screening.startTime}
+            endTime={screening.endTime}
+            format={screening.format}
+          />
+        ))}
+      </div>
     </div>
-  )
+  );
 }
 
-export default Repertuar
+export default Repertuar;

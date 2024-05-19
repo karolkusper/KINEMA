@@ -1,8 +1,11 @@
 .screeningRowContainer{
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    align-items: center;
     height: 100%;
     gap: 5vw;
+    margin-bottom: 2vh;
+    margin-left: 2vw;
 }
 .screeningRow-image{
     width: 200px;
@@ -17,7 +20,10 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: start;
+    background-color: #8d050b51;
+    padding: 15px 10px;
+    border-radius: 5px;
 }
-.screeningRow-info h1{
+.screeningRow-info h1,.screeningRow-info h2,.screeningRow-info h3, p{
     margin: 0;
 }
