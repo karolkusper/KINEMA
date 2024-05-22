@@ -1,7 +1,9 @@
 package com.karolkusper.KINEMA.service.Seat;
 
+import com.karolkusper.KINEMA.dao.SeatAvailabilityRepository;
 import com.karolkusper.KINEMA.dao.SeatRepository;
 import com.karolkusper.KINEMA.entity.Seat;
+import com.karolkusper.KINEMA.entity.SeatAvailability;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +14,12 @@ import java.util.Optional;
 public class SeatServiceImpl implements SeatService{
 
     private final SeatRepository seatRepository;
+    private  final SeatAvailabilityRepository seatAvailabilityRepo;
 
     @Autowired
-    public SeatServiceImpl(SeatRepository seatRepository) {
+    public SeatServiceImpl(SeatRepository seatRepository, SeatAvailabilityRepository seatAvailabilityRepo) {
         this.seatRepository = seatRepository;
+        this.seatAvailabilityRepo = seatAvailabilityRepo;
     }
 
     @Override
@@ -28,15 +32,16 @@ public class SeatServiceImpl implements SeatService{
     }
 
 
-    public Seat reserveSeat(int seatId) {
-        Seat seat = seatRepository.findById(seatId).orElseThrow(() -> new RuntimeException("Seat not found"));
-        if (seat.getAvailable()) {
-            seat.setAvailable(false);
-            return seatRepository.save(seat);
-        } else {
-            throw new RuntimeException("Seat already reserved");
-        }
-    }
+//    public Seat reserveSeat(int seatId) {
+//        Seat seat = seatRepository.findById(seatId).orElseThrow(() -> new RuntimeException("Seat not found"));
+//        if (seat.getAvailable()) {
+//            seat.setAvailable(false);
+//            return seatRepository.save(seat);
+//        } else {
+//            throw new RuntimeException("Seat already reserved");
+//        }
+//    }
+
 
     @Override
     public Seat findById(int id) {
