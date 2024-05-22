@@ -12,12 +12,13 @@ public class Seat {
     private int id;
 
     @Column(name = "seat_row")
-    private String seatRow;
+    private int seatRow;
 
     @Column(name="seat_column")
-    private String seatColumn;
+    private int seatColumn;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+//    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "cinema_hall_id", nullable = false)
     private CinemaHall cinemaHall;
 
@@ -28,7 +29,7 @@ public class Seat {
     public Seat(){
 
     }
-    public Seat(int id, String seatRow, String seatColumn, CinemaHall cinemaHall, Boolean isAvailable) {
+    public Seat(int id, int seatRow, int seatColumn, CinemaHall cinemaHall, Boolean isAvailable) {
         this.id = id;
         this.seatRow = seatRow;
         this.seatColumn = seatColumn;
@@ -44,19 +45,19 @@ public class Seat {
         this.id = id;
     }
 
-    public String getSeatRow() {
+    public int getSeatRow() {
         return seatRow;
     }
 
-    public void setSeatRow(String seatRow) {
+    public void setSeatRow(int seatRow) {
         this.seatRow = seatRow;
     }
 
-    public String getSeatColumn() {
+    public int getSeatColumn() {
         return seatColumn;
     }
 
-    public void setSeatColumn(String seatColumn) {
+    public void setSeatColumn(int seatColumn) {
         this.seatColumn = seatColumn;
     }
 

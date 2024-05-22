@@ -23,6 +23,21 @@ public class SeatServiceImpl implements SeatService{
         return seatRepository.findAll();
     }
 
+    public List<Seat> findByCinemaHallId(int id){
+        return seatRepository.findSeatsByCinemaHallId(id);
+    }
+
+
+    public Seat reserveSeat(int seatId) {
+        Seat seat = seatRepository.findById(seatId).orElseThrow(() -> new RuntimeException("Seat not found"));
+        if (seat.getAvailable()) {
+            seat.setAvailable(false);
+            return seatRepository.save(seat);
+        } else {
+            throw new RuntimeException("Seat already reserved");
+        }
+    }
+
     @Override
     public Seat findById(int id) {
         Seat seat = null;
