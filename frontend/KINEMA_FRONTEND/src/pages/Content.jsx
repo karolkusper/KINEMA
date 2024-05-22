@@ -19,7 +19,7 @@ function Content() {
         <Route path='movies' element={<Movie />} />
         <Route path='repertuar' element={<Repertuar />} />
         <Route path='profile' element={<Profile />} />
-        <Route path='seats' element={<SeatPicker cinemaHallId={1}/>} />
+        <Route path='seats/:screeningId' element={<SeatPicker/>} />
       </Routes>
       <Footer />
     </>

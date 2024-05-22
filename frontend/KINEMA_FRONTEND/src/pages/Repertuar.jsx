@@ -26,6 +26,7 @@ function Repertuar() {
         {screenings.map((screening) => (
           <ScreeningRow
             key={screening.id}
+            screeningId={screening.id}
             cinemaHall={screening.cinemaHall}
             movie={screening.movie}
             startTime={screening.startTime}

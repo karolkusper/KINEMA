@@ -1,12 +1,14 @@
 package com.karolkusper.KINEMA.service.Screening;
 
 import com.karolkusper.KINEMA.dao.ScreeningRepository;
+import com.karolkusper.KINEMA.dao.SeatAvailabilityRepository;
+import com.karolkusper.KINEMA.dao.SeatRepository;
 import com.karolkusper.KINEMA.entity.Screening;
-import com.karolkusper.KINEMA.entity.User;
+import com.karolkusper.KINEMA.entity.Seat;
+import com.karolkusper.KINEMA.entity.SeatAvailability;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,9 +17,16 @@ public class ScreeningServiceImpl implements ScreeningService{
 
     private final ScreeningRepository screeningRepository;
 
+
+    private final SeatRepository seatRepository;
+
+    private final SeatAvailabilityRepository seatAvailabilityRepository;
+
     @Autowired
-    public ScreeningServiceImpl(ScreeningRepository repository) {
+    public ScreeningServiceImpl(ScreeningRepository repository, SeatRepository seatRepository, SeatAvailabilityRepository seatAvailabilityRepository) {
         this.screeningRepository = repository;
+        this.seatRepository = seatRepository;
+        this.seatAvailabilityRepository = seatAvailabilityRepository;
     }
 
     //TO DO
@@ -44,7 +53,9 @@ public class ScreeningServiceImpl implements ScreeningService{
     public Screening save(Screening screening) {
         int id = screening.getId();
         if(id==0){
-            return screeningRepository.save(screening);
+            Screening newScreening = screeningRepository.save(screening);
+            initializeSeatAvailability(newScreening);
+            return newScreening;
         }
         else{
             Screening existingScreening = screeningRepository.findById(id)
@@ -57,6 +68,17 @@ public class ScreeningServiceImpl implements ScreeningService{
             existingScreening.setFormat(screening.getFormat());
 
             return screeningRepository.save(existingScreening);
+        }
+    }
+
+    private void initializeSeatAvailability(Screening screening) {
+        List<Seat> seats = seatRepository.findSeatsByCinemaHallId(screening.getCinemaHall().getId());
+        for (Seat seat : seats) {
+            SeatAvailability seatAvailability = new SeatAvailability();
+            seatAvailability.setScreening(screening);
+            seatAvailability.setSeat(seat);
+            seatAvailability.setAvailable(true);
+            seatAvailabilityRepository.save(seatAvailability);
         }
     }
 
