@@ -1,13 +1,13 @@
 import React from 'react';
 import '../styles/Seat.css';
 
-const Seat = ({ column, isAvailable, onClick }) => {
+const Seat = ({ row, column, isAvailable, isSelected, onClick }) => {
   return (
-    <div 
-      className={`seat ${isAvailable ? 'available' : 'reserved'}`} 
+    <div
+      className={`seat ${isAvailable ? 'available' : 'unavailable'} ${isSelected ? 'selected' : ''}`}
       onClick={isAvailable ? onClick : null}
     >
-      {column}
+      {row}{column}
     </div>
   );
 };

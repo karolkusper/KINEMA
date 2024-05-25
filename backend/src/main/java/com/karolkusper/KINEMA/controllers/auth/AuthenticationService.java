@@ -36,15 +36,6 @@ public class AuthenticationService {
 
     public AuthenticationResponse register(RegisterRequest request) {
 
-//        var user = User.builder()
-//                .username(request.getUserName())
-//                .firstname(request.getFirstName())
-//                .lastname(request.getLastName())
-//                .email(request.getEmail())
-//                .password(passwordEncoder.encode(request.getPassword()))
-//                .role(request.getRoles())
-//                .build();
-//            userRepository.save(user);
         User user = new User();
         user.setUserName(request.getUserName());
         user.setFirstName(request.getFirstName());

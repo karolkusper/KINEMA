@@ -50,7 +50,7 @@ public class BookingServiceImpl implements BookingService{
             existingBooking.setUser(booking.getUser());
             existingBooking.setScreening(booking.getScreening());
             existingBooking.setTicketType(booking.getTicketType());
-            existingBooking.setSeatIds(booking.getSeatIds());
+            existingBooking.setSeats(booking.getSeats());
 
             return  bookingRepository.save(existingBooking);
 

@@ -12,26 +12,29 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "screening_id", nullable = false)
     private Screening screening;
     @Column(name = "ticket_type")
     private String ticketType;
-    @ElementCollection
-    @CollectionTable(name = "seats", joinColumns = @JoinColumn(name = "booking_id"))
-    @Column(name = "seat_id")
-    private List<Integer> seatIds;
+    @ManyToMany
+    @JoinTable(
+            name = "booking_seats",
+            joinColumns = @JoinColumn(name = "booking_id"),
+            inverseJoinColumns = @JoinColumn(name = "seat_id")
+    )
+    private List<Seat> seats;
 
     public Booking(){}
 
-    public Booking(User user, Screening screening, String ticketType, List<Integer> seatIds) {
+    public Booking(User user, Screening screening, String ticketType, List<Seat> seatIds) {
         this.user = user;
         this.screening = screening;
         this.ticketType = ticketType;
-        this.seatIds = seatIds;
+        this.seats = seatIds;
     }
 
     public void setId(int id) {
@@ -66,12 +69,12 @@ public class Booking {
         this.ticketType = ticketType;
     }
 
-    public List<Integer> getSeatIds() {
-        return seatIds;
+    public List<Seat> getSeats() {
+        return seats;
     }
 
-    public void setSeatIds(List<Integer> seatIds) {
-        this.seatIds = seatIds;
+    public void setSeats(List<Seat> seatIds) {
+        this.seats = seatIds;
     }
 
     @Override
@@ -81,7 +84,7 @@ public class Booking {
                 ", user=" + user +
                 ", screening=" + screening +
                 ", ticketType='" + ticketType + '\'' +
-                ", seatIds=" + seatIds +
+                ", seats=" + seats +
                 '}';
     }
 }

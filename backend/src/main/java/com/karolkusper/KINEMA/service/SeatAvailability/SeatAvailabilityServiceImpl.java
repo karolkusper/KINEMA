@@ -5,6 +5,7 @@ import com.karolkusper.KINEMA.entity.SeatAvailability;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -30,6 +31,23 @@ public class SeatAvailabilityServiceImpl {
         } else {
             throw new RuntimeException("Seat already reserved");
         }
+    }
+
+
+    public List<SeatAvailability> reserveMultipleSeats(int screeningId, List<Integer> seatIds) {
+        List<SeatAvailability> updatedSeats = new ArrayList<>();
+        for (int seatId : seatIds) {
+            SeatAvailability seatAvailability = seatAvailabilityRepo
+                    .findByScreeningIdAndSeatId(screeningId, seatId)
+                    .orElseThrow(() -> new RuntimeException("Seat not found for this screening"));
+            if (seatAvailability.getAvailable()) {
+                seatAvailability.setAvailable(false);
+                updatedSeats.add(seatAvailabilityRepo.save(seatAvailability));
+            } else {
+                throw new RuntimeException("Seat already reserved");
+            }
+        }
+        return updatedSeats;
     }
 
     public List<SeatAvailability> findByScreeningId(int screeningId){
