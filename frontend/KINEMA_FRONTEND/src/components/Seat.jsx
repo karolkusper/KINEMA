@@ -7,7 +7,7 @@ const Seat = ({ row, column, isAvailable, isSelected, onClick }) => {
       className={`seat ${isAvailable ? 'available' : 'unavailable'} ${isSelected ? 'selected' : ''}`}
       onClick={isAvailable ? onClick : null}
     >
-      {row}{column}
+      {column}
     </div>
   );
 };

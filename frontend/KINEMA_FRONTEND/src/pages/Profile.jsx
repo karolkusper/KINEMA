@@ -9,6 +9,11 @@ function Profile() {
 
     const [user, setUser] = useState(null);
     const [userId, setUserId] = useState(null);
+    const [bookings, setBookings] = useState([]);
+
+    const formatTime = (time)=>{
+      return new Date(time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    }
 
     useEffect(() => {
       const fetchProfile = async () => {
@@ -30,6 +35,14 @@ function Profile() {
           
           setUser(response.data);
           console.log(response.data);
+
+
+            // Fetch bookings for the user
+        const bookingsResponse = await api.get(`/api/bookings/${userId}`);
+        setBookings(bookingsResponse.data);
+        console.log(bookingsResponse.data);
+
+
         } catch (error) {
           console.log("Error fetching user data:", error);
           // Handle error or redirect to login
@@ -73,6 +86,23 @@ function Profile() {
               {/* <div id="changeProfileData">
                   <button type="button" className="profileButton">Zmień dane profilu</button>
               </div> */}
+        </div>
+        <div className='my-bookings'>
+          <h2>My reservations</h2>
+          {bookings.length > 0 ? (
+            bookings.map((booking,index) => (
+              <div key={booking.id} className='booking-row'>
+                <h3>Reservation {index+1}</h3>
+                <p>Screening: {booking.screening.movie.title}</p>
+                <p>Date: {formatTime(booking.screening.startTime)}</p>
+                <p>Hall: </p>
+                <p>Seats: {booking.seats.map(seat => `R:${seat.seatRow} C:${seat.seatColumn}`).join(', ')}</p>
+                <p>Ticket type: {booking.ticketType}</p>
+              </div>
+            ))
+          ) : (
+            <p>Brak rezerwacji</p>
+          )}
         </div>
       </div>
     </div>

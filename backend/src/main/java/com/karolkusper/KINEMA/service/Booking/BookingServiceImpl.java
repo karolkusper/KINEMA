@@ -37,6 +37,11 @@ public class BookingServiceImpl implements BookingService{
         return booking;
     }
 
+    public List<Booking> findAllByUserId(int userId)
+    {
+        return  bookingRepository.findByUserId(userId);
+    }
+
     @Override
     public Booking save(Booking booking) {
         int id = booking.getId();

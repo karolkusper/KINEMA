@@ -1,5 +1,7 @@
 .seat-picker-container {
     display: flex;
+    flex-direction: column;
+    gap: 5vh;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -45,4 +47,35 @@
     background-color: red;
     cursor: not-allowed;
   }
+
+
+  .screen{
+    background-color: black;
+    color: white;
+    min-width: 50vw;
+    height: 40px;
+  }
   
+
+
+  .reserve-button{
+    border-style: none;
+    padding: 10px 20px;
+    font-size: 1.75em;
+    justify-content: space-evenly;
+    cursor: pointer;
+
+
+    background-color: #590004;
+    border-radius: 2em;
+    color: white;
+  }
+
+  .reserve-button:hover{
+    background-color: black;
+    color: #f3020c;
+  }
+
+  .row-number{
+    color: #f3020c;
+  }

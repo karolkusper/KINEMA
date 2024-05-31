@@ -100,6 +100,7 @@ const SeatPicker = () => {
 
   return (
     <div className="seat-picker-container">
+      <div className='screen'>screen</div>
       <div className="seat-picker">
         {Object.keys(rows).map(row => (
           <div key={row} className="row">

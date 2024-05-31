@@ -12,8 +12,11 @@
     background-color: green;
   }
   
-  .seat.reserved {
+  .seat.unavailable{
     background-color: red;
     cursor: not-allowed;
+  }
+  .seat.available.selected {
+    background-color: gray;
   }
   

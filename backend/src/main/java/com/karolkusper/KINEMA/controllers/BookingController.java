@@ -38,16 +38,18 @@ public class BookingController {
         return bookingService.findAll();
     }
 
-    @GetMapping("/{bookingId}")
+
+
+    @GetMapping("/admin/{bookingId}")
     public Booking getBookingDetailsById(@PathVariable Integer bookingId){
         return bookingService.findById(bookingId);
     }
 
-//    @PostMapping
-//    public Booking addBooking(@RequestBody Booking booking){
-//        System.out.println("Received booking: " + booking);
-//        return bookingService.save(booking);
-//    }
+    @GetMapping("/{userId}")
+    public List<Booking> getBookingByUserId(@PathVariable Integer userId){
+        return bookingService.findAllByUserId(userId);
+    }
+
 
     @PostMapping()
     public ResponseEntity<Booking> addBooking(@RequestBody BookingRequest bookingRequest) {
