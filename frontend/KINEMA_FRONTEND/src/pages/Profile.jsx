@@ -52,6 +52,17 @@ function Profile() {
       fetchProfile();
     }, []);
 
+    const deleteBooking = async (bookingId) => {
+      try {
+        const deleteResponse = await api.delete(`/api/bookings/${bookingId}`);
+        console.log(deleteResponse.data);
+        setBookings((prevBookings) => prevBookings.filter((booking) => booking.id !== bookingId));
+        alert('Booking deleted successfully!');
+      } catch (error) {
+        console.error('Error deleting booking:', error);
+      }
+    };
+
   if (!user) {
     return <div>Loading...</div>;
   }
@@ -95,9 +106,12 @@ function Profile() {
                 <h3>Reservation {index+1}</h3>
                 <p>Screening: {booking.screening.movie.title}</p>
                 <p>Date: {formatTime(booking.screening.startTime)}</p>
-                <p>Hall: </p>
-                <p>Seats: {booking.seats.map(seat => `R:${seat.seatRow} C:${seat.seatColumn}`).join(', ')}</p>
+                <p>Hall: {booking.screening.cinemaHall.hallName}</p>
+                <p>Seats: {booking.seats.map(seat => `R:${seat.seatRow} C:${seat.seatColumn}`).join(' | ')}</p>
                 <p>Ticket type: {booking.ticketType}</p>
+                <button onClick={() => deleteBooking(booking.id)} className="delete-button">
+                  Delete reservation
+                </button>
               </div>
             ))
           ) : (

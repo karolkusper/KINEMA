@@ -21,10 +21,11 @@ function AdminAddScreeningForm() {
         e.preventDefault();
         try{
             const response = await api.post('/api/screenings',formData);
-            console.log('Adding a movie do db successful:', response.data);
+            alert('New screening added successfully!');
+            console.log('Adding a screening do db successful:', response.data);
         }
         catch (error){
-            console.error('Adding a movie do db  failed:',error.response.data)
+            console.error('Adding a screening do db  failed:',error.response.data)
         }
     }
 
@@ -40,7 +41,7 @@ function AdminAddScreeningForm() {
                     <input name="endTime" type="text" placeholder="End time" value={formData.endTime} onChange={handleChange}/>
                     <input name="format" type="text" placeholder="Format" value={formData.format} onChange={handleChange}/>
                 </div>
-                <button className="button" type="submit">Add new screening</button>
+                <button className="button" onClick={handleSubmit}>Add new screening</button>
             </form>
         </div>
     </div>

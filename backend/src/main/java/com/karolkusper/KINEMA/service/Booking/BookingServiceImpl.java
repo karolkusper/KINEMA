@@ -64,6 +64,6 @@ public class BookingServiceImpl implements BookingService{
 
     @Override
     public void deleteById(int id) {
-        System.out.println("Usuwanie booking id="+id);
+        bookingRepository.deleteById(id);
     }
 }

@@ -1,13 +1,11 @@
 package com.karolkusper.KINEMA.controllers;
 
-import com.karolkusper.KINEMA.entity.Booking;
-import com.karolkusper.KINEMA.entity.Screening;
-import com.karolkusper.KINEMA.entity.Seat;
-import com.karolkusper.KINEMA.entity.User;
+import com.karolkusper.KINEMA.entity.*;
 import com.karolkusper.KINEMA.requests.BookingRequest;
 import com.karolkusper.KINEMA.service.Booking.BookingServiceImpl;
 import com.karolkusper.KINEMA.service.Screening.ScreeningServiceImpl;
 import com.karolkusper.KINEMA.service.Seat.SeatServiceImpl;
+import com.karolkusper.KINEMA.service.SeatAvailability.SeatAvailabilityServiceImpl;
 import com.karolkusper.KINEMA.service.User.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,13 +22,15 @@ public class BookingController {
     private final UserServiceImpl userService;
     private final ScreeningServiceImpl screeningService;
     private final SeatServiceImpl seatService;
+    private final SeatAvailabilityServiceImpl seatAvailabilityService;
 
     @Autowired
-    public BookingController(BookingServiceImpl bookingService, UserServiceImpl userService, ScreeningServiceImpl screeningService, SeatServiceImpl seatService) {
+    public BookingController(BookingServiceImpl bookingService, UserServiceImpl userService, ScreeningServiceImpl screeningService, SeatServiceImpl seatService, SeatAvailabilityServiceImpl seatAvailabilityService) {
         this.bookingService = bookingService;
         this.userService = userService;
         this.screeningService = screeningService;
         this.seatService = seatService;
+        this.seatAvailabilityService = seatAvailabilityService;
     }
 
     @GetMapping()
@@ -87,7 +87,15 @@ public class BookingController {
     }
 
     @DeleteMapping("/{bookingId}")
-    public void deleteBooking(@PathVariable Integer bookingId){
+    public ResponseEntity<Void> deleteBooking(@PathVariable int bookingId) {
+        Booking booking = bookingService.findById(bookingId);
+        if (booking == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        seatAvailabilityService.setSeatsAvailable(booking.getScreening().getId(), booking.getSeats());
         bookingService.deleteById(bookingId);
+
+        return ResponseEntity.ok().build();
     }
 }
