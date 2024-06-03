@@ -62,7 +62,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(authToken);
 
                 // Logowanie ról użytkownika
-                System.out.println("User " + userEmail + " has roles: " + userDetails.getAuthorities());
+//                System.out.println("User " + userEmail + " has roles: " + userDetails.getAuthorities());
             }
         }
         filterChain.doFilter(request,response);

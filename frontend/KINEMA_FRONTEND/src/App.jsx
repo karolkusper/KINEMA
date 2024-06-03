@@ -4,10 +4,10 @@ import Content from './pages/Content';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import AdminPanel from './pages/AdminPanel';
+import ErrorPage from './pages/ErrorPage'; 
 import './styles/Forms.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { AuthProvider } from './components/AuthContext';
-import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
@@ -17,11 +17,9 @@ function App() {
           <Route path='/' element={<Login />} />
           <Route path='register' element={<Register />} />
           <Route path='content/*' element={<Content />} />
-          <Route path='admin/admin_panel' element={
-            <ProtectedRoute role="ROLE_ADMIN">
-              <AdminPanel />
-            </ProtectedRoute>
-          } />
+          <Route path='admin/admin_panel' element={<AdminPanel />} />
+          <Route path='/error' element={<ErrorPage />} />
+          <Route path='*' element={<ErrorPage />} /> {/* Catch-all route for undefined paths */}
         </Routes>
       </Router>
     </AuthProvider>
@@ -29,8 +27,6 @@ function App() {
 }
 
 export default App;
-
-
 // import React from 'react';
 // import './App.css';
 // import Content from './pages/Content';

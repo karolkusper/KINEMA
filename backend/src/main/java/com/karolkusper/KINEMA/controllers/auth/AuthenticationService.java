@@ -4,6 +4,7 @@ import com.karolkusper.KINEMA.config.jwtService;
 import com.karolkusper.KINEMA.dao.RoleRepository;
 import com.karolkusper.KINEMA.dao.UserRepository;
 import com.karolkusper.KINEMA.entity.User;
+import com.karolkusper.KINEMA.entity.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 
@@ -69,6 +71,8 @@ public class AuthenticationService {
 
         //     Pobierz ID użytkownika z userDetails
         extraClaims.put("userId", user.getId());
+
+        extraClaims.put("roles", user.getRoles().stream().map(Role::getName).collect(Collectors.toList()));
 
 
         var jwtToken = jwtService.generateToken(extraClaims,user);

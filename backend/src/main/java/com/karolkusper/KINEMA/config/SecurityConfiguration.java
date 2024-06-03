@@ -41,8 +41,8 @@ public class SecurityConfiguration {
 //            .requestMatchers("/api/v1/auth/**").permitAll()
 //           .requestMatchers("/error").permitAll() DO POPRAWY
                     .requestMatchers("/api/v1/auth/**", "/error").permitAll()
-                    .requestMatchers(HttpMethod.GET, "/api/movies").hasRole("CLIENT")
-                    .requestMatchers(HttpMethod.GET, "/api/screenings").hasRole("CLIENT")
+                    .requestMatchers(HttpMethod.GET, "/api/movies").hasAnyRole("CLIENT", "ADMIN")
+                    .requestMatchers(HttpMethod.GET, "/api/screenings").hasAnyRole("CLIENT", "ADMIN")
                     .requestMatchers("/api/screenings/**").hasRole("ADMIN")
                     .requestMatchers("/api/movies/**").hasRole("ADMIN")
             .anyRequest().authenticated())

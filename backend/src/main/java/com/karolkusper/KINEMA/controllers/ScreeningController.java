@@ -7,6 +7,7 @@ import com.karolkusper.KINEMA.requests.ScreeningRequest;
 import com.karolkusper.KINEMA.service.CinemaHall.CinemaHallServiceImpl;
 import com.karolkusper.KINEMA.service.Movie.MovieServiceImpl;
 import com.karolkusper.KINEMA.service.Screening.ScreeningServiceImpl;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -68,9 +69,10 @@ public class ScreeningController {
         }
     }
 
-    @DeleteMapping("/{screeningId}")
-    public void deleteScreening(@PathVariable Integer screeningId){
-        screeningService.deleteById(screeningId);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteScreening(@PathVariable int id) {
+        screeningService.deleteScreening(id);
+        return ResponseEntity.noContent().build();
     }
 
 }

@@ -19,6 +19,10 @@ function Repertuar() {
     fetchScreenings();
   }, []);
 
+  const handleDeleteScreening = (id) => {
+    setScreenings((prevScreenings) => prevScreenings.filter((screening) => screening.id !== id));
+  };
+
   return (
     <div>
       <div className='screeningsContainer'>
@@ -31,6 +35,7 @@ function Repertuar() {
             startTime={screening.startTime}
             endTime={screening.endTime}
             format={screening.format}
+            onDelete={handleDeleteScreening}
           />
         ))}
       </div>

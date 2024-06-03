@@ -8,6 +8,7 @@ import com.karolkusper.KINEMA.entity.Seat;
 import com.karolkusper.KINEMA.entity.SeatAvailability;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -29,7 +30,6 @@ public class ScreeningServiceImpl implements ScreeningService{
         this.seatAvailabilityRepository = seatAvailabilityRepository;
     }
 
-    //TO DO
     @Override
     public List<Screening> findAll() {
         return screeningRepository.findAll();
@@ -71,6 +71,7 @@ public class ScreeningServiceImpl implements ScreeningService{
         }
     }
 
+
     private void initializeSeatAvailability(Screening screening) {
         List<Seat> seats = seatRepository.findSeatsByCinemaHallId(screening.getCinemaHall().getId());
         for (Seat seat : seats) {
@@ -82,11 +83,10 @@ public class ScreeningServiceImpl implements ScreeningService{
         }
     }
 
+    @Transactional
+    public void deleteScreening(int screeningId) {
 
-
-    @Override
-    public void deleteById(int id) {
-        //to do
-        System.out.println("Usuwanie screening id="+id);
+        seatAvailabilityRepository.deleteByScreeningId(screeningId);
+        screeningRepository.deleteById(screeningId);
     }
 }

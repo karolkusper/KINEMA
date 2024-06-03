@@ -11,5 +11,5 @@ public interface MovieService {
     Movie findById(int id);
 
     Movie save(Movie movie);
-    void deleteById(int id);
+
 }

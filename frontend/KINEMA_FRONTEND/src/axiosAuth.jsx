@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const api = axios.create({
     baseURL: 'http://localhost:8080',
@@ -16,6 +17,17 @@ api.interceptors.request.use(
     return config;
   },
   (error) => Promise.reject(error)
+);
+
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    const navigate = useNavigate();
+    if (error.response && (error.response.status === 403 || error.response.status === 401)) {
+      navigate('/error');
+    }
+    return Promise.reject(error);
+  }
 );
 
 export default api

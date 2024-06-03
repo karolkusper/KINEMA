@@ -1,15 +1,41 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
+import AdminAddMovieForm from '../components/AdminAddMovieForm.jsx';
+import NavBar from '../components/NavBar.jsx';
+import Footer from '../components/Footer.jsx';
+import "../styles/AdminPanel.css";
+import AdminAddScreeningForm from '../components/AdminAddScreeningForm.jsx';
+import AuthContext from '../components/AuthContext';
 import { Navigate } from 'react-router-dom';
-import AuthContext from './AuthContext';
 
-const ProtectedRoute = ({ children, role }) => {
-    const { user } = useContext(AuthContext);
+function AdminPanel() {
+  const { user} = useContext(AuthContext);
 
-    if (!user || (role && !user.roles.includes(role))) {
-        return <Navigate to="/" />;
+  useEffect(() => {
+    if (user) {
+      console.log('Admin Panel User:', user);
     }
+  }, [user]);
 
-    return children;
-};
 
-export default ProtectedRoute;
+  if (!user) {
+    return <Navigate to="/" />;
+  }
+
+  if (!user.roles.includes('ROLE_ADMIN')) {
+    return <Navigate to="/error" />;
+  }
+
+  return (
+    <div>
+      <NavBar/>
+      <h1 className='title'>Witaj adminie!</h1>
+      <div className='forms-container'>
+        <AdminAddMovieForm/>
+        <AdminAddScreeningForm/>
+      </div>
+      <Footer/>
+    </div>
+  );
+}
+
+export default AdminPanel;

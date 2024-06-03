@@ -31,6 +31,10 @@ function Movies() {
         fetchMovies();
     }, []);
 
+    const handleDeleteMovie = (id) => {
+        setMovies((prevMovies) => prevMovies.filter((movie) => movie.id !== id));
+    };
+
     return (
         <div className='movies'>
             <h1 className='moviesTitle'>Our movies</h1>
@@ -42,12 +46,14 @@ function Movies() {
                 {movies.map((movie) => (
                     <MovieItem
                         key={movie.id}
+                        id={movie.id}
                         title={movie.title}
                         desc={movie.description}
                         director={movie.director}
                         productionYear={movie.productionYear}
                         // image={movie.image} // Assuming you have an 'image' property in your Movie model
                         image={movie.posterPath}
+                        onDelete={handleDeleteMovie}
                     />
                 ))}
             </div>

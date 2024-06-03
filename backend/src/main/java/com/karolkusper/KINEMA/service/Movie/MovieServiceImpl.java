@@ -1,9 +1,13 @@
 package com.karolkusper.KINEMA.service.Movie;
 
 import com.karolkusper.KINEMA.dao.MovieRepository;
+import com.karolkusper.KINEMA.dao.ScreeningRepository;
 import com.karolkusper.KINEMA.entity.Movie;
+import com.karolkusper.KINEMA.entity.Screening;
+import com.karolkusper.KINEMA.service.Screening.ScreeningServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,10 +16,14 @@ import java.util.Optional;
 public class MovieServiceImpl implements MovieService{
 
     private final MovieRepository movieRepository;
+    private final ScreeningRepository screeningRepository;
+    private final ScreeningServiceImpl screeningService;
 
     @Autowired
-    public MovieServiceImpl(MovieRepository movieRepository) {
+    public MovieServiceImpl(MovieRepository movieRepository, ScreeningRepository screeningRepository, ScreeningServiceImpl screeningService) {
         this.movieRepository = movieRepository;
+        this.screeningRepository = screeningRepository;
+        this.screeningService = screeningService;
     }
     @Override
     public List<Movie> findAll() {
@@ -59,9 +67,13 @@ public class MovieServiceImpl implements MovieService{
         }
     }
 
-    @Override
-    public void deleteById(int id) {
-        //to do
-        System.out.println("Usuwanie filmu...");
+    @Transactional
+    public void deleteMovie(int movieId) {
+        List<Screening> screenings = screeningRepository.findByMovieId(movieId);
+
+        for (Screening screening : screenings) {
+            screeningService.deleteScreening(screening.getId());
+        }
+        movieRepository.deleteById(movieId);
     }
 }

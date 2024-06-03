@@ -3,6 +3,7 @@ package com.karolkusper.KINEMA.controllers;
 import com.karolkusper.KINEMA.entity.Movie;
 import com.karolkusper.KINEMA.service.Movie.MovieServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -49,9 +50,9 @@ public class MovieController {
         }
     }
 
-    @DeleteMapping("/{movieId}")
-    public void deleteMovie(@PathVariable Integer movieId)
-    {
-        movieService.deleteById(movieId);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteMovie(@PathVariable int id) {
+        movieService.deleteMovie(id);
+        return ResponseEntity.noContent().build();
     }
 }

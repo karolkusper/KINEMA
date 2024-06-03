@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import Logo from "../assets/cinema_logo.png";
 import { useNavigate } from 'react-router-dom';
 import '../styles/NavBar.css';
@@ -32,17 +32,24 @@ function NavBar() {
                 <MenuButton desc="/content/movies" name="Movies" />
                 <MenuButton desc="/content/repertuar" name="Repertuar" />
                 {user && <MenuButton desc="/content/profile" name="Profile" />}
+                {user && user.roles.includes('ROLE_ADMIN') && (
+                    <MenuButton desc="/admin/admin_panel" name="Admin Panel" />
+                )}
                 {user ? (
                     <button className="menuButton" onClick={handleLogout}>Logout</button>
                 ) : (
                     <MenuButton desc="/" name="Login" />
                 )}
             </div>
+            {/* <button onClick={toggleNavBar}>
+                <ReorderIcon />
+            </button> */}
         </div>
     );
 }
 
 export default NavBar;
+
 
 // import React, {useState,useEffect} from 'react';
 // import Logo from "../assets/cinema_logo.png";
