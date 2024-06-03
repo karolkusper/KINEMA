@@ -2,10 +2,12 @@ package com.karolkusper.KINEMA.entity;
 
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name="users")
@@ -36,6 +38,12 @@ public class User implements UserDetails {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Collection<Role> roles;
+
+
+//    @Override
+//    public Collection<? extends GrantedAuthority> getAuthorities() {
+//        return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
+//    }
 
     public User(){}
     public User(String userName, String password, /*Boolean enabled,*/ String firstName, String lastName, String email,Collection<Role> roles) {
@@ -129,15 +137,21 @@ public class User implements UserDetails {
 
 
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() { //sprawdzic czy dobrze
-        return List.of(new GrantedAuthority() {
-            @Override
-            public String getAuthority() {
-                return getRoles().toString();
-            }
-        });
-    }
+//    @Override
+//    public Collection<? extends GrantedAuthority> getAuthorities() { //sprawdzic czy dobrze
+//        return List.of(new GrantedAuthority() {
+//            @Override
+//            public String getAuthority() {
+//                return getRoles().toString();
+//            }
+//        });
+//    }
+@Override
+public Collection<? extends GrantedAuthority> getAuthorities() {
+    return roles.stream()
+            .map(role -> new SimpleGrantedAuthority(role.getName()))
+            .collect(Collectors.toList());
+}
 
 
 

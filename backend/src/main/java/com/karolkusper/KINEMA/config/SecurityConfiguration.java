@@ -3,6 +3,7 @@ package com.karolkusper.KINEMA.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -31,25 +32,19 @@ public class SecurityConfiguration {
         this.authenticationProvider = authenticationProvider;
     }
 
-//    @Bean
-//    CorsConfigurationSource corsConfigurationSource() {
-//        CorsConfiguration configuration = new CorsConfiguration();
-//        configuration.setAllowedOrigins(Arrays.asList("http://localhost:5173"));
-//        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
-//        configuration.addAllowedHeader("Authorization"); // Dodaj ten nagłówek, jeśli jest wymagany
-//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-//        source.registerCorsConfiguration("/**", configuration);
-//        return source;
-//    }
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(conf -> conf.disable())
 //                .cors(c->c.configurationSource(corsConfigurationSource()))
                 .cors(Customizer.withDefaults())
             .authorizeHttpRequests(auth -> auth
-            .requestMatchers("/api/v1/auth/**").permitAll()
-            .requestMatchers("/error").permitAll()
+//            .requestMatchers("/api/v1/auth/**").permitAll()
+//           .requestMatchers("/error").permitAll() DO POPRAWY
+                    .requestMatchers("/api/v1/auth/**", "/error").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/api/movies").hasRole("CLIENT")
+                    .requestMatchers(HttpMethod.GET, "/api/screenings").hasRole("CLIENT")
+                    .requestMatchers("/api/screenings/**").hasRole("ADMIN")
+                    .requestMatchers("/api/movies/**").hasRole("ADMIN")
             .anyRequest().authenticated())
             .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authenticationProvider(authenticationProvider)

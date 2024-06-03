@@ -21,7 +21,6 @@ function Repertuar() {
 
   return (
     <div>
-      <div>Dni tygodnia</div>
       <div className='screeningsContainer'>
         {screenings.map((screening) => (
           <ScreeningRow

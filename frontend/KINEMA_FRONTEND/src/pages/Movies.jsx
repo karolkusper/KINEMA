@@ -3,13 +3,24 @@ import MovieItem from '../components/MovieItem';
 import Slider from '../components/Slider';
 import '../styles/Movies.css';
 import api from "../axiosAuth";
-
+import { jwtDecode } from 'jwt-decode'
 function Movies() {
     const [movies, setMovies] = useState([]);
 
     useEffect(() => {
         const fetchMovies = async () => {
             try {
+
+                const token = localStorage.getItem('token');
+                if (token) {
+                    const decodedToken = jwtDecode(token);
+                    console.log('Decoded Token:', decodedToken);
+
+                    // Sprawdź role użytkownika
+                    const roles = decodedToken.roles || [];
+                    console.log('User Roles:', roles);
+                }
+
                 const response = await api.get('/api/movies');
                 setMovies(response.data);
             } catch (error) {
