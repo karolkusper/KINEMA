@@ -21,3 +21,16 @@
     background-color: #121619;
     color: #f3020c;
   }
+
+  
+/* Media Queries for menuButton */
+@media (max-width: 768px) {
+  .menuButton {
+      width: 80%;
+      margin-right: 0;
+      margin-bottom: 10px;
+      font-size: 18px;
+      border-top: 1px solid black;
+      padding-top: 10px;
+  }
+}

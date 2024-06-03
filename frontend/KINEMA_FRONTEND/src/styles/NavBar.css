@@ -1,31 +1,66 @@
 .navbar {
-    width: 100%;
-    height: 10vh;
-    background-color: #590004;
-    display: flex;
-    flex-direction: row;
-  }
-  
+  width: 100%;
+  height: 10vh;
+  background-color: #590004;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.navbar .leftSide {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.navbar .leftSide img {
+  width: 70px;
+}
+
+.navbar .rightSide {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.navbar .rightSide.open {
+  display: block;
+  position: absolute;
+  top: 10vh;
+  right: 0;
+  background-color: #590004;
+  width: 100%;
+  text-align: center;
+  flex-direction: column;
+}
+
+.navbar .toggleButton {
+  display: none;
+}
+
+@media (max-width: 768px) {
   .navbar .leftSide {
-    flex: 50%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    padding-left: 10vw;
-    color: white;
-    justify-content: flex-start;
-    gap:20px;
-    
+      display: none;
   }
-  
-  .navbar .leftSide img {
-    width: 70px;
-  }
-  
+
   .navbar .rightSide {
-    flex: 50%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+      display: none;
+      flex-direction: column;
+      align-items: center;
   }
+
+  .navbar .rightSide.open {
+      display: flex;
+  }
+
+  .navbar .toggleButton {
+      display: block;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+  }
+}
