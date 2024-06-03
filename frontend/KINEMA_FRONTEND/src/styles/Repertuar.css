@@ -1,7 +1,16 @@
-.moviesContainer{
+.screeningsContainer{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 5vh;
-    margin-left: 15vw;
+    margin: 15px 0;
+}
+
+
+/* Media Queries for mobile screens */
+@media (max-width: 768px) {
+    .screeningsContainer {
+        align-items: center;
+        gap: 2vh;
+    }
 }

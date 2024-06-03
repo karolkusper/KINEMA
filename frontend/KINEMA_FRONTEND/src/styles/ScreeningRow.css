@@ -27,3 +27,32 @@
 .screeningRow-info h1,.screeningRow-info h2,.screeningRow-info h3, p{
     margin: 0;
 }
+
+
+
+
+@media (max-width: 768px) {
+    .screeningRowContainer {
+        flex-direction: column;
+        align-items: center;
+        gap: 2vh;
+        margin-left: 0;
+    }
+
+    .screeningRow-image {
+        display: none;
+    }
+
+    .screeningRow-info {
+        width: 100%;
+        align-items: center;
+        text-align: center;
+    }
+
+    .screeningRow-info h1,
+    .screeningRow-info h2,
+    .screeningRow-info h3,
+    p {
+        margin-bottom: 1vh;
+    }
+}
