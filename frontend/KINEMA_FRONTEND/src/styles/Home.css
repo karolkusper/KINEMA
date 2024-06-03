@@ -14,7 +14,6 @@
 .headerContainer {
   position: relative; /* Dodajemy pozycję względną dla pseudoelementu */
   width: auto;
-  /* margin-left: 50px; */
   padding: 20px; /* Dodałem padding, aby tekst był bardziej czytelny */
   background-color: #8d050b51; /* Kolor tła z przezroczystością */
   border-radius: 10px;
@@ -40,7 +39,7 @@
   justify-content: center;
   align-items: center;
   font-size: 60px;
-  height: 60px;
+  height: auto;
   font-weight: 50;
   color: white;
 }
@@ -79,33 +78,35 @@
   }
 
   .headerContainer {
-    margin-left: 0px;
+    margin-left: 0;
     border-radius: 10px;
     padding: 10px;
-    width: 100%;
+    width: 90%; 
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: rgba(18, 22, 25, 0.7); /* Kolor tła z przezroczystością */
+    background-color: rgba(18, 22, 25, 0.7); 
     color: white;
   }
 
   .headerContainer h1 {
-    font-size: 40px;
-    height: 30px;
-    color: white;
+    font-size: 32px;
+    margin: 10px 0;
+    text-align: center; 
   }
 
   .headerContainer p {
-    font-size: 30px;
-    color: white;
+    font-size: 24px;
+    text-align: center; 
   }
 
   .headerContainer button {
     background-color: white;
     color: #121619;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+    width: 80%; 
+    font-size: 18px; 
   }
 
   .headerContainer button:hover {
@@ -113,3 +114,5 @@
     color: #121619;
   }
 }
+
+
