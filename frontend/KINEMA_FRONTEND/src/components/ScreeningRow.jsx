@@ -3,6 +3,7 @@ import "../styles/ScreeningRow.css";
 import ScreeningTimeButton from './ScreeningTimeButton';
 import AuthContext from './AuthContext';
 import api from "../axiosAuth";
+import "../styles/Button.css"
 
 function ScreeningRow({ screeningId, cinemaHall, movie, startTime, endTime, format , onDelete}) {
   const { user } = useContext(AuthContext);
@@ -31,7 +32,7 @@ function ScreeningRow({ screeningId, cinemaHall, movie, startTime, endTime, form
         <h2>Director: {movie.director} | Production year: {movie.productionYear}</h2>
         <p>{movie.description}</p>
         {user && user.roles && user.roles.includes('ROLE_ADMIN') && (
-        <button onClick={deleteScreening}>Delete Screening</button>
+        <button className='button_item' onClick={deleteScreening}>Delete Screening</button>
       )}
       </div>
     </div>

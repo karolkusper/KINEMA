@@ -1,0 +1,25 @@
+.button_item{
+  background-color: #121619;
+  border: none;
+  color: white;
+  font-size: 20px;
+  margin-right: 20px;
+  cursor: pointer;
+  min-height: 50px;
+  border-radius: 10px;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: 0.25s;
+
+  text-decoration: none;
+  margin: 10px 0;
+  }
+
+
+  .button_item:hover{
+    background-color: #121619;
+    color: #f3020c;
+  }

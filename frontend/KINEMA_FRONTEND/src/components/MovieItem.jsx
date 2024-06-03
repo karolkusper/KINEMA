@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import AuthContext from './AuthContext';
 import api from "../axiosAuth";
+import "../styles/Button.css"
 
 function MovieItem({ id, title, desc, director, productionYear, image,onDelete  }) {
   const { user } = useContext(AuthContext);
@@ -25,7 +26,7 @@ function MovieItem({ id, title, desc, director, productionYear, image,onDelete  
       <h2>{productionYear}</h2>
       <p>{desc}</p>
       {user && user.roles && user.roles.includes('ROLE_ADMIN') && (
-        <button onClick={deleteMovie}>Delete Movie</button>
+        <button className='button_item' onClick={deleteMovie}>Delete Movie</button>
       )}
     </div>
   );
