@@ -65,7 +65,6 @@
 
 
 
-  /* moje style -------------------------------------- */
 
   .sliderDiv{
     width: 60vw;
@@ -73,7 +72,7 @@
     margin: 0 auto;
   }
 
-  /* ------------------------------------------------- */
+
   
   @media only screen and (max-width: 1300px) {
     .moviesList {
@@ -82,7 +81,30 @@
   }
   
   @media only screen and (max-width: 800px) {
+    .sliderDiv{
+      display: none;
+    }
     .moviesList {
       grid-template-columns: 1fr;
+      width: 90%;
+    }
+  
+    .moviesItem {
+      min-width: 100%;
+      min-height: auto;
+      margin: 10px 0;
+    }
+  
+    .moviesItem div {
+      height: 150px;
+    }
+  
+    .moviesItem h1,
+    .moviesItem p {
+      margin-left: 10px;
+    }
+  
+    .movies .moviesTitle {
+      font-size: 40px;
     }
   }
